@@ -51,3 +51,23 @@ Thumbs.db
 
 # Docker
 *.log
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+# Rails
+/log/*
+!/log/.keep
+/tmp/*
+!/tmp/.keep
+!/tmp/pids/
+!/tmp/pids/.keep
+/storage/*
+!/storage/.keep
+/public/uploads
+/public/system
+/public/assets
+.byebug_history
+
+# Kamal deployment secrets
+.kamal/secrets
