@@ -1,0 +1,41 @@
+<!-- File: app/views/registrations/index.html.erb -->
+<!-- Location: /registration-for-the-upcoming-practicum/app/views/registrations/index.html.erb -->
+
+<div class="container">
+  <h1>Practicum Registrations Dashboard</h1>
+
+  <%= link_to "New Registration", new_registration_path, class: "btn" %>
+
+  <div class="stats">
+    <p>Total Registrations: <%= @students.count %></p>
+    <p>Available Students: <%= @students.where(availability: true).count %></p>
+    <p>Prerequisites Completed: <%= @students.where(completed_prerequisites: true).count %></p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Cohort</th>
+        <th>Project Idea</th>
+        <th>Available</th>
+        <th>Prerequisites</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.name %></td>
+          <td><%= student.email %></td>
+          <td><%= student.cohort %></td>
+          <td><%= truncate(student.practicum_idea, length: 50) %></td>
+          <td><%= student.availability ? "✓" : "✗" %></td>
+          <td><%= student.completed_prerequisites ? "✓" : "✗" %></td>
+          <td><%= link_to "View", registration_path(student) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

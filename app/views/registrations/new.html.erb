@@ -1,0 +1,54 @@
+<!-- File: app/views/registrations/new.html.erb -->
+<!-- Location: /registration-for-the-upcoming-practicum/app/views/registrations/new.html.erb -->
+
+<div class="container">
+  <h1>Register for Practicum</h1>
+
+  <%= form_with model: @student, url: registrations_path, local: true do |f| %>
+    <% if @student.errors.any? %>
+      <div class="errors">
+        <h2><%= pluralize(@student.errors.count, "error") %> prohibited registration:</h2>
+        <ul>
+          <% @student.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cohort, "Cohort (Rails/React/Node)" %>
+      <%= f.select :cohort, ['Rails', 'React/Node'], { prompt: 'Select cohort' }, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :practicum_idea, "Project Idea" %>
+      <%= f.text_area :practicum_idea, rows: 5, required: true,
+          placeholder: "Describe your app idea (e.g., Event Organizer, Recipe Tracker, AI Study Helper)" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :availability %>
+      <%= f.check_box :availability %>
+      <span>I am available for 10-20 hours/week</span>
+    </div>
+
+    <div class="field">
+      <%= f.label :completed_prerequisites %>
+      <%= f.check_box :completed_prerequisites %>
+      <span>I have completed required prerequisites (React+Node OR Rails)</span>
+    </div>
+
+    <%= f.submit "Register", class: "btn" %>
+  <% end %>
+</div>

@@ -1,0 +1,21 @@
+<!-- File: app/views/registrations/show.html.erb -->
+<!-- Location: /registration-for-the-upcoming-practicum/app/views/registrations/show.html.erb -->
+
+<div class="container">
+  <h1>Registration Details</h1>
+
+  <div class="student-details">
+    <p><strong>Name:</strong> <%= @student.name %></p>
+    <p><strong>Email:</strong> <%= @student.email %></p>
+    <p><strong>Cohort:</strong> <%= @student.cohort %></p>
+    <p><strong>Available:</strong> <%= @student.availability ? "Yes" : "No" %></p>
+    <p><strong>Prerequisites Completed:</strong> <%= @student.completed_prerequisites ? "Yes" : "No" %></p>
+
+    <h3>Project Idea:</h3>
+    <p><%= simple_format(@student.practicum_idea) %></p>
+
+    <p><strong>Registered:</strong> <%= @student.created_at.strftime("%B %d, %Y at %I:%M %p") %></p>
+  </div>
+
+  <%= link_to "Back to Dashboard", registrations_path, class: "btn" %>
+</div>
