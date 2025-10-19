@@ -1,0 +1,53 @@
+# File: .gitignore
+# Location: /registration-for-the-upcoming-practicum/.gitignore
+# Purpose: Prevent tracking of sensitive files and virtual environments
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets detection
+.secrets.baseline
+
+# Docker
+*.log

@@ -1,0 +1,11 @@
+# File: requirements.txt
+# Location: /registration-for-the-upcoming-practicum/requirements.txt
+# Purpose: Python dependencies for uv package manager
+
+# Pre-commit and security
+pre-commit==3.6.2
+detect-secrets==1.5.0
+
+# Code quality
+black==25.9.0
+flake8==7.3.0
