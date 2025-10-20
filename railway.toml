@@ -1,8 +1,6 @@
 [build]
-builder = "dockerfile"
-dockerfilePath = "./Dockerfile"
+builder = "nixpacks"
 
 [deploy]
-startCommand = "bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0 -p ${PORT:-3000}"
-restartPolicyType = "on-failure"
-restartPolicyMaxRetries = 10
+startCommand = "rails db:migrate && rails server -b 0.0.0.0 -p ${PORT:-3000}"
+restartPolicyType = "on_failure"
