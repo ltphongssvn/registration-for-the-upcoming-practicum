@@ -7,3 +7,6 @@ startCommand = "sh /app/bin/docker-entrypoint.sh"
 restartPolicyType = "on_failure"
 healthcheckPath = "/"
 healthcheckTimeout = 100
+
+[build.image]
+name = "ltphongssvnclaudepromax/practicum-hub:latest"
