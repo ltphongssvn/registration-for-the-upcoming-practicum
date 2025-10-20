@@ -1,6 +1,9 @@
 [build]
-builder = "nixpacks"
+builder = "DOCKERFILE"
+dockerfilePath = "./Dockerfile"
 
 [deploy]
-startCommand = "rails db:migrate && rails server -b 0.0.0.0 -p ${PORT:-3000}"
+startCommand = "sh /app/bin/docker-entrypoint.sh"
 restartPolicyType = "on_failure"
+healthcheckPath = "/"
+healthcheckTimeout = 100
