@@ -20,5 +20,5 @@ RUN useradd -m -u 1000 rails && \
     chown -R rails:rails /app
 USER rails
 EXPOSE 3000
-# Run migrations and start server
-CMD bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0 -p ${PORT:-3000}
+# Use entrypoint script
+ENTRYPOINT ["/app/bin/docker-entrypoint.sh"]
