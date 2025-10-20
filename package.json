@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "private": true,
+  "scripts": {
+    "build": "node esbuild.config.js",
+    "build:watch": "node esbuild.config.js --watch",
+    "build:css": "echo 'No CSS bundling configured'"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.11"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.27.1",
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.18",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}

@@ -61,3 +61,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Modern JavaScript bundling for React
+gem "jsbundling-rails"
+gem "cssbundling-rails"

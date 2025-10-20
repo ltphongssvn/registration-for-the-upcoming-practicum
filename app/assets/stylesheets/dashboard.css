@@ -1,0 +1,156 @@
+/* File: app/assets/stylesheets/dashboard.css */
+/* Location: /registration-for-the-upcoming-practicum/app/assets/stylesheets/dashboard.css */
+
+.react-dashboard {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.search-input, .filter-select, .group-select {
+  padding: 10px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.search-input:focus {
+  border-color: #4299e1;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.search-input {
+  flex: 1;
+  min-width: 250px;
+}
+
+.group-section {
+  margin: 30px 0;
+}
+
+.group-title {
+  color: #2d3748;
+  border-bottom: 2px solid #4299e1;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.student-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.student-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.student-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  border-color: #4299e1;
+}
+
+.student-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.student-header h3 {
+  margin: 0;
+  color: #1a202c;
+  font-size: 18px;
+}
+
+.status-badges {
+  display: flex;
+  gap: 6px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge.available {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.badge.completed {
+  background: #bee3f8;
+  color: #2c5282;
+}
+
+.email {
+  color: #718096;
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+.cohort {
+  color: #4a5568;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.idea-section {
+  background: #f7fafc;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+.idea-section strong {
+  color: #2d3748;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.idea-section p {
+  color: #4a5568;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.view-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #4299e1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.view-link:hover {
+  color: #2b6cb0;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #718096;
+  font-size: 18px;
+}

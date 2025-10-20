@@ -1,10 +1,11 @@
 # File: config/routes.rb
-# Location: /registration-for-the-upcoming-practicum/config/routes.rb
-
 Rails.application.routes.draw do
   root "registrations#index"
-
   resources :registrations, only: [:index, :new, :create, :show]
+
+  namespace :api do
+    resources :students, only: [:index]
+  end
 
   get "up" => "rails/health#show", as: :rails_health_check
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
