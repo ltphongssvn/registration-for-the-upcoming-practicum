@@ -65,3 +65,5 @@ end
 # Modern JavaScript bundling for React
 gem "jsbundling-rails"
 gem "cssbundling-rails"
+
+gem "dotenv-rails", "~> 3.1"

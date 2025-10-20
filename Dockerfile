@@ -1,33 +1,31 @@
-# File: Dockerfile
-# Location: /registration-for-the-upcoming-practicum/Dockerfile
-# Purpose: Docker configuration for Rails with PostgreSQL using uv
-
 FROM ruby:3.2.1-slim
 
-# Install system dependencies
+# Install dependencies
 RUN apt-get update -qq && \
-    apt-get install -y build-essential libpq-dev nodejs postgresql-client && \
+    apt-get install -y build-essential libpq-dev nodejs npm curl && \
+    npm install -g yarn && \
     rm -rf /var/lib/apt/lists/*
-
-# Install uv for Python dependencies
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 WORKDIR /app
 
-# Install Ruby dependencies
+# Copy dependency files
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
+
+COPY package.json package-lock.json ./
+RUN npm install
 
 # Copy application
 COPY . .
 
-# Setup Python venv with uv if needed
-RUN uv venv /app/.venv
-ENV PATH="/app/.venv/bin:$PATH"
-
 # Precompile assets
-RUN SECRET_KEY_BASE=dummy bundle exec rails assets:precompile
+RUN bundle exec rails assets:precompile
+
+# Create non-root user
+RUN useradd -m -u 1000 rails && \
+    chown -R rails:rails /app
+USER rails
 
 EXPOSE 3000
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
