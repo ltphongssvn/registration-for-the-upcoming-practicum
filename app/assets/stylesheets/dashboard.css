@@ -154,3 +154,144 @@
   color: #718096;
   font-size: 18px;
 }
+
+/* AI Grouping Panel */
+.ai-grouping-panel {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.panel-header h2 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.panel-header p {
+  color: #666;
+  font-size: 14px;
+}
+
+.analyze-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 15px 0;
+}
+
+.analyze-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-box {
+  background: #fee;
+  border: 1px solid #fcc;
+  padding: 12px;
+  border-radius: 4px;
+  margin: 10px 0;
+  color: #c00;
+}
+
+.last-analyzed {
+  color: #666;
+  font-size: 13px;
+  margin: 10px 0;
+}
+
+.groups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.group-card {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.group-card h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.student-count {
+  color: #667eea;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.reason {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Team Suggestions */
+.team-suggestions {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.controls label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.controls select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.teams-list {
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.team-card {
+  background: #f0f7ff;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.team-card h3 {
+  margin: 0 0 10px 0;
+}
+
+.member-count {
+  color: #007bff;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.rationale {
+  color: #555;
+  line-height: 1.6;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
