@@ -4,7 +4,11 @@
 Rails.application.routes.draw do
   root "registrations#index"
 
-  resources :registrations, only: [:index, :new, :create, :show]
+  resources :registrations, only: [:index, :new, :create, :show] do
+    collection do
+      get :cohorts
+    end
+  end
 
   namespace :api do
     resources :students, only: [:index]

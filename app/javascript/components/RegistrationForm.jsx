@@ -1,7 +1,7 @@
 // File: app/javascript/components/RegistrationForm.jsx
 // Location: /registration-for-the-upcoming-practicum/app/javascript/components/RegistrationForm.jsx
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function RegistrationForm({ onSuccess }) {
   const [formData, setFormData] = useState({
@@ -14,6 +14,21 @@ function RegistrationForm({ onSuccess }) {
   })
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
+  const [cohortOptions, setCohortOptions] = useState([])
+  const [loadingCohorts, setLoadingCohorts] = useState(true)
+
+  useEffect(() => {
+    fetch('/registrations/cohorts.json')
+      .then(res => res.json())
+      .then(data => {
+        setCohortOptions(data.cohorts || [])
+        setLoadingCohorts(false)
+      })
+      .catch(err => {
+        console.error('Failed to load cohorts:', err)
+        setLoadingCohorts(false)
+      })
+  }, [])
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target
@@ -128,23 +143,32 @@ function RegistrationForm({ onSuccess }) {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Cohort *
+              Cohort * (Last 10 years available)
             </label>
             <select
               name="cohort"
               value={formData.cohort}
               onChange={handleChange}
+              disabled={loadingCohorts}
               className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 ${
                 errors.cohort ? 'border-red-500' : 'border-gray-300'
               }`}
             >
-              <option value="">Select your cohort</option>
-              <option value="Spring 2024">Spring 2024</option>
-              <option value="Summer 2024">Summer 2024</option>
-              <option value="Fall 2024">Fall 2024</option>
-              <option value="Winter 2025">Winter 2025</option>
+              <option value="">
+                {loadingCohorts ? 'Loading cohorts...' : 'Select your cohort from the last 10 years'}
+              </option>
+              {cohortOptions.map((cohort, idx) => (
+                <option key={idx} value={cohort}>
+                  {cohort}
+                </option>
+              ))}
             </select>
             {errors.cohort && <p className="mt-1 text-sm text-red-600">{errors.cohort}</p>}
+            {!loadingCohorts && cohortOptions.length > 0 && (
+              <p className="mt-1 text-xs text-gray-500">
+                {cohortOptions.length} cohorts available spanning 10 years with multiple tracks
+              </p>
+            )}
           </div>
 
           <div>

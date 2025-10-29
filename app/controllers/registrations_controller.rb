@@ -5,7 +5,6 @@ class RegistrationsController < ApplicationController
 
   def index
     @students = Student.all.order(created_at: :desc)
-
     respond_to do |format|
       format.html
       format.json { render json: @students }
@@ -18,7 +17,6 @@ class RegistrationsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
-
     respond_to do |format|
       if @student.save
         format.html { redirect_to registration_path(@student), notice: "Registration successful!" }
@@ -32,6 +30,33 @@ class RegistrationsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
+  end
+
+  def cohorts
+    current_year = Date.current.year
+    current_month = Date.current.month
+    cohorts = []
+
+    (current_year - 9..current_year).each do |year|
+      seasons = ['Winter', 'Spring', 'Summer', 'Fall']
+
+      # For current year, only include seasons up to current one
+      if year == current_year
+        current_season_index = case current_month
+                               when 1..2 then 0  # Winter
+                               when 3..5 then 1  # Spring
+                               when 6..8 then 2  # Summer
+                               else 3            # Fall
+                               end
+        seasons = seasons[0..current_season_index]
+      end
+
+      seasons.each do |season|
+        cohorts << "#{season} #{year}"
+      end
+    end
+
+    render json: { cohorts: cohorts.reverse }
   end
 
   private
