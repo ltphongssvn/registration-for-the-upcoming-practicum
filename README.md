@@ -1,5 +1,7 @@
 # Registration for the Upcoming Practicum
 
+Live demo: https://practicum.thanhphongle.net/
+
 A Rails 8 application for managing practicum course registrations with AI-powered team formation capabilities.
 
 ## Features
